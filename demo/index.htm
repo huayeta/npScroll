@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>npScroll demo</title>
+    <style media="screen">
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        /*必有样式*/
+        body,html{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .np-container{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .np-navigation-menu{
+            position: fixed;
+            right: 20px;
+            bottom: 50%;
+            transform: translateY(50%);
+        }
+        .np-navigation-menu .navigation-item{
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            background: #f9f9f9;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+        /*demo 样式*/
+        #first{
+            background-color: #3595a1;
+            height: 200px;
+            position:relative;
+            z-index: 1;
+        }
+        #first p{
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 37px;
+            padding: 65px;
+        }
+        #first a{
+            width: 160px;
+            margin: auto;
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-family: Impact, "Arial Black",serif;
+            font-size: 25px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #CF6969;
+            border-radius: 25px;
+        }
+        #first a:hover{
+            background-color: #FFF;
+            color: #CF6969;
+            cursor: pointer;
+        }
+        #second{
+            background: url('./images/bg.jpg') no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            height: 100%;
+        }
+        #second p{
+            font-size: 40px;
+            color: #FFF;
+            font-family: Helvetica, Arial, sans-serif;
+            padding-top: 60px;
+            text-align: center;
+        }
+        #finale{
+            background-color: #3595a1;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 37px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="np-container">
+        <div class="np-section" id="first">
+            <p>
+                npScroll
+            </p>
+            <a onclick="$('.sonp-section').nextPage()">下一个</a>
+        </div>
+        <div class="np-section np-parallax" id="second">
+            <p>Parallax effect</p>
+        </div>
+        <div class="np-section" id="finale">
+            footer
+        </div>
+    </div>
+</body>
+</html>
+<script src="./js/jquery.js" charset="utf-8"></script>
+<script src="../npScroll.js" charset="utf-8"></script>
+<script type="text/javascript">
+    new npScroll();
+</script>
