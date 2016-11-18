@@ -19,7 +19,7 @@
 
 # 安装
 
-    bower install --save ngScroll
+    bower install --save npScroll
 
 # Example
 
