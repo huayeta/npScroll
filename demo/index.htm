@@ -97,7 +97,7 @@
             <p>
                 npScroll
             </p>
-            <a onclick="$('.sonp-section').nextPage()">下一个</a>
+            <a class="j-next">下一个</a>
         </div>
         <div class="np-section np-parallax" id="second">
             <p>Parallax effect</p>
@@ -111,5 +111,8 @@
 <script src="./js/jquery.js" charset="utf-8"></script>
 <script src="../npScroll.js" charset="utf-8"></script>
 <script type="text/javascript">
-    new npScroll();
+    var scroll=new npScroll();
+    $('.j-next').on('click',function(){
+        scroll.scrollTo(1);
+    })
 </script>
