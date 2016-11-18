@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>npScroll demo</title>
+    <title>npScroll demo2</title>
     <style media="screen">
         *{
             margin: 0;
@@ -37,20 +37,27 @@
         .np-navigation-menu .navigation-item.navigation-item-active{
             background: #f9f9f9;
         }
+        /* effect 2*/
+
         /*demo 样式*/
         #first{
             background-color: #3595a1;
-            height: 200px;
+            height: 100%;
             position:relative;
-            z-index: 1;
         }
-        #first p{
+        #first h3{
             color: rgb(255, 255, 255);
             text-align: center;
             font-family: sans-serif;
             font-weight: bold;
             font-size: 37px;
-            padding: 65px;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 145px;
         }
         #first a{
             width: 160px;
@@ -65,6 +72,10 @@
             text-align: center;
             background-color: #CF6969;
             border-radius: 25px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -75px;
         }
         #first a:hover{
             background-color: #FFF;
@@ -86,27 +97,40 @@
         }
         #finale{
             background-color: #3595a1;
-            height: 200px;
-            line-height: 200px;
+            height: 100%;
+            line-height: 100%;
             text-align: center;
             font-size: 37px;
             color: #fff;
+            position: relative;
+        }
+        #finale h3{
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 37px;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 145px;
         }
     </style>
 </head>
 <body>
     <div class="np-container">
         <div class="np-section" id="first">
-            <p>
-                npScroll
-            </p>
+            <h3>npScroll</h3>
             <a class="j-next">下一个</a>
         </div>
         <div class="np-section np-parallax" id="second">
             <p>Parallax effect</p>
         </div>
         <div class="np-section" id="finale">
-            footer
+            <h3>footer</h3>
         </div>
     </div>
 </body>
@@ -114,7 +138,9 @@
 <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js" charset="utf-8"></script>
 <script src="../npScroll.js" charset="utf-8"></script>
 <script type="text/javascript">
-    var scroll=new npScroll();
+    var scroll=new npScroll({
+        effect:1
+    });
     $('.j-next').on('click',function(){
         scroll.scrollTo(1);
     })

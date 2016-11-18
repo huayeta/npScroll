@@ -18,10 +18,12 @@
          var opts={
              containerClass:'.np-container',
              sectionClass:'.np-section',
-             parallaxClass:'.np-parallax'
+             parallaxClass:'.np-parallax',
+             effect:1
          };
          $.extend(opts,defaults);
          var _this=this;
+         this.opts=opts;
          this.$box=$(opts.containerClass);
          this.$sections=this.$box.find(opts.sectionClass);
          this.section_top_arr=[];
@@ -70,7 +72,7 @@
          }
          //监控鼠标滚动或者向上向下按键
          this.$window.on('keydown DOMMouseScroll mousewheel',function(event){
-             event.preventDefault();
+            //  event.preventDefault();
              // 现在时间
              var now = new Date().getTime();
 
@@ -95,11 +97,21 @@
                  return 0;
              }
          })
+         //初始化滚动
+         if(location.hash && location.hash.indexOf('#page')!=-1){
+             var index=parseInt(location.hash.slice(5));
+             if(index){
+                 this.scrollTo(index);
+             }else{
+                 this.scrollTo(0);
+             }
+         }else{
+             this.scrollTo(0);
+         }
      }
      npScroll.prototype.itemClick=function(obj){
          var $obj=$(obj);
-         this.$navigationItems.removeClass('navigation-item-active');
-         $obj.addClass('navigation-item-active');
+
          var index=$obj.data('section');
          this.scrollTo(index);
      }
@@ -117,8 +129,15 @@
      }
      npScroll.prototype.scrollTo=function(index){
          this.pageIndex=index;
+         //更新导航
+         this.$navigationItems.removeClass('navigation-item-active');
+         this.$navigationItems.filter(':eq('+this.pageIndex+')').addClass('navigation-item-active');
          var top=this.section_top_arr[index];
-         this.$box.stop().animate({scrollTop: top},1000);
+         if(this.opts.effect==1){
+             this.$box.stop().animate({scrollTop: top},1000);
+         }else if(this.opts.effect==2){
+
+         }
      }
      window.npScroll=npScroll;
      return npScroll;
