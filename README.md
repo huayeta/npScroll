@@ -1,7 +1,5 @@
 # npScroll
 
-****************************************************************
-
      npScroll - Smooth ONePage Scroll - Simple JS based on JQuery
 
      - Section sizes
@@ -9,8 +7,6 @@
      - Sections navigation
      - Parallax effect
      - One simple JS file (no more)
-
-****************************************************************
 
 # options对象参数：
  * containerClass: 最外层的className，默认：np-container
