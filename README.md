@@ -12,9 +12,15 @@
 
 ****************************************************************
 
+# options对象参数：
+ * containerClass: 最外层的className，默认：np-container
+ * sectionClass: 每一个section的className，默认：np-section
+ * parallaxClass: 如果section的背景需要视差效果，可以加上这个className，默认：np-parallax
 
-###### Example
 
+# Example
+
+html部分：
 ``` HTML
 <!doctype html>
 <html>
@@ -40,7 +46,7 @@
     </body>
 </html>
 ```
-
+css部分：
 ``` css
 <style media="screen">
 /*必有样式*/
@@ -70,7 +76,13 @@ body,html{
 }
 </style>
 ```
-
+js部分：
 ``` js
-new npScroll();
+new npScroll(
+    {
+        containerClass:'.np-container',
+        sectionClass:'.np-section',
+        parallaxClass:'.np-parallax'
+    }
+);
 ```
