@@ -70,7 +70,7 @@
          }
          //监控鼠标滚动或者向上向下按键
          this.$window.on('keydown DOMMouseScroll mousewheel',function(event){
-             // event.preventDefault();
+             event.preventDefault();
              // 现在时间
              var now = new Date().getTime();
 
