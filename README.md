@@ -22,6 +22,7 @@
  * this.scrollTo(index); 滚动到index页
  * this.nextPage(); 滚动到下一页
  * this.prevPage(); 滚动到上一页
+
 # 事件类型
  * this.on('scrollStart',cb)；开始滚动
  * this.on('scrollEnd',cb)；结束滚动
