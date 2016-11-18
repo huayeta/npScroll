@@ -17,6 +17,9 @@
  * sectionClass: 每一个section的className，默认：np-section
  * parallaxClass: 如果section的背景需要视差效果，可以加上这个className，默认：np-parallax
 
+# 安装
+
+    bower install --save ngScroll
 
 # Example
 

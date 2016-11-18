@@ -1,0 +1,24 @@
+{
+  "name": "npScroll",
+  "main": "npScroll.js",
+  "homepage": "https://github.com/huayeta/npScroll",
+  "authors": [
+    "huayeta"
+  ],
+  "description": "Smooth ONePage Scroll",
+  "keywords": [
+    "scroll"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies":{
+      "jquery": "~2.1.4"
+  }
+}
