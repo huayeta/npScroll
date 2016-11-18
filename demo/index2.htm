@@ -37,6 +37,12 @@
         .np-navigation-menu .navigation-item.navigation-item-active{
             background: #f9f9f9;
         }
+        .np-section{
+            transform: translateY(-100%);
+        }
+        .np-section.active{
+            transform: translateY(0);
+        }
         /* effect 2*/
 
         /*demo 样式*/
@@ -139,7 +145,7 @@
 <script src="../npScroll.js" charset="utf-8"></script>
 <script type="text/javascript">
     var scroll=new npScroll({
-        effect:1
+        effect:2
     });
     $('.j-next').on('click',function(){
         scroll.scrollTo(1);

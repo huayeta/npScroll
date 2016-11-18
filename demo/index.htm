@@ -22,6 +22,7 @@
         }
         .np-navigation-menu{
             position: fixed;
+            z-index: 9;
             right: 20px;
             bottom: 50%;
             transform: translateY(50%);
@@ -114,7 +115,11 @@
 <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js" charset="utf-8"></script>
 <script src="../npScroll.js" charset="utf-8"></script>
 <script type="text/javascript">
-    var scroll=new npScroll();
+    var scroll=new npScroll().on('scrollStart',function(index){
+        console.log('开始滚动：'+index);
+    }).on('scrollEnd',function(index){
+        console.log('滚动结束：'+index);
+    });
     $('.j-next').on('click',function(){
         scroll.scrollTo(1);
     })

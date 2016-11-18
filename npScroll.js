@@ -38,10 +38,46 @@
          this.$body=$('body');
          this.$window=$(window);
          this.time=new Date().getTime();
+         this._events={};
          //初始化
          this.init();
          return this;
      }
+     npScroll.prototype.on=function(type,cb){
+        if(!this._events[type]){
+            this._events[type]=[];
+        }
+        this._events[type].push($.proxy(cb,this));
+        return this;
+    }
+    npScroll.prototype.trigger=function(){
+        var args=[].slice.apply(arguments);
+        var type=args[0];
+        var params=args.slice(1);
+        var events=this._events[type];
+        if(events && events.length>0){
+            for(var i=0,n=events.length;i<n;i++){
+                events[i](params);
+            }
+        }
+        return this;
+    }
+    npScroll.prototype.off=function(type,cb){
+        if(!type){
+            return this._events={};
+        }
+        var events=this._events[type];
+        if(events && events.length>0){
+            for(var i=0,n=events.length;i<n;i++){
+                if(events[i]===cb){
+                    events.splice(i,-1);
+                    break;
+                }
+            }
+        }
+        this._events[type]=events;
+        return this;
+    }
      npScroll.prototype.init=function(){
          //初始化section
          var _this=this;
@@ -97,47 +133,66 @@
                  return 0;
              }
          })
+         //监听hash的变化
+         this.$window.on('hashchange',function(){
+             _this.hashchange();
+         })
          //初始化滚动
+         this.hashchange();
+         return this;
+     }
+     npScroll.prototype.hashchange=function(){
          if(location.hash && location.hash.indexOf('#page')!=-1){
              var index=parseInt(location.hash.slice(5));
-             if(index){
+             if(index!==undefined && index!==this.pageIndex && index<=this.pagesMax){
                  this.scrollTo(index);
-             }else{
-                 this.scrollTo(0);
              }
-         }else{
-             this.scrollTo(0);
          }
      }
      npScroll.prototype.itemClick=function(obj){
          var $obj=$(obj);
-
          var index=$obj.data('section');
          this.scrollTo(index);
+         return this;
      }
      npScroll.prototype.nextPage=function(){
          if(this.pageIndex < this.pagesMax-1){
              this.pageIndex++;
              this.scrollTo(this.pageIndex);
          }
+         return this;
      }
      npScroll.prototype.prevPage=function(){
          if(this.pageIndex > 0){
              this.pageIndex--;
              this.scrollTo(this.pageIndex);
          }
+         return this;
      }
      npScroll.prototype.scrollTo=function(index){
+         var _this=this;
+         //滚动钩子
+         setTimeout(function(){
+             _this.trigger('scrollStart',index);
+         },0)
          this.pageIndex=index;
          //更新导航
-         this.$navigationItems.removeClass('navigation-item-active');
+         this.$navigationItems.filter(':not('+this.pageIndex+')').removeClass('navigation-item-active');
          this.$navigationItems.filter(':eq('+this.pageIndex+')').addClass('navigation-item-active');
+         //更新section
+         this.$sections.filter(':not('+this.pageIndex+')').removeClass('np-section-active');
+         this.$sections.filter(':eq('+this.pageIndex+')').addClass('np-section-active');
          var top=this.section_top_arr[index];
          if(this.opts.effect==1){
              this.$box.stop().animate({scrollTop: top},1000);
          }else if(this.opts.effect==2){
 
          }
+         //滚动结束钩子
+         setTimeout(function(){
+             _this.trigger('scrollEnd',index);
+         },1000)
+         return this;
      }
      window.npScroll=npScroll;
      return npScroll;
