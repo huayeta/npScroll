@@ -12,7 +12,7 @@
  * containerClass: 最外层的className，默认：np-container
  * sectionClass: 每一个section的className，默认：np-section
  * parallaxClass: 如果section的背景需要视差效果，可以加上这个className，默认：np-parallax
- * effect: 效果，默认是1，值还有2
+ * effect: 效果，默认是1，值还有2,详情见`demo`
 
 # 实例有三个函数
  * this.scrollTo(index); 滚动到index页
