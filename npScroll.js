@@ -76,9 +76,16 @@
              this.dh=this.$window.height();
              this.$sections.each(function(index){
                 var $this=$(this);
-                if(index==0)return true;
-                $this.css('webkitTransform','translateY(-'+_this.dh+'px)');
-                $this.css('transform','translateY(-'+_this.dh+'px)');
+                if(index!=0){
+                    // $this.css('webkitTransform','translateY(-'+_this.dh+'px)');
+                    $this.css('transform','translateY('+_this.dh+'px)');
+                }
+                setTimeout(function(){
+                    $this.css({
+                        'transition':'all 1s ease',
+                        'display':'block'
+                    });
+                },0)
              })
          }
          //监控鼠标滚动或者向上向下按键
@@ -135,15 +142,15 @@
      }
      npScroll.prototype.nextPage=function(){
          if(this.pageIndex < this.pagesMax-1){
-             this.pageIndex++;
-             this.scrollTo(this.pageIndex);
+             var index=this.pageIndex+1;
+             this.scrollTo(index);
          }
          return this;
      }
      npScroll.prototype.prevPage=function(){
          if(this.pageIndex > 0){
-             this.pageIndex--;
-             this.scrollTo(this.pageIndex);
+             var index=this.pageIndex-1;
+             this.scrollTo(index);
          }
          return this;
      }
@@ -169,22 +176,15 @@
          }else if(this.opts.effect==2){
              //如果效果2
              var $old_section=this.$sections.filter(':eq('+old_pageIndex+')');
-             console.log(old_pageIndex);
              if(old_pageIndex<this.pageIndex){
-                 //出现的
-                //  $section.css('webkitTransform','translateY(0)');
                  $section.css({
-                     'transform':'translateY(0)',
-                     'z-index':2
+                     'transform':'translateY(0)'
                  });
-                 //消失的
-                 console.log(_this.dh);
-                //  $old_section.css('webkitTransform','translateY(-'+_this.dh+'px)');
-                 $old_section.css({
-                     'transform':'translateY(-'+_this.dh+'px)',
-                     'z-index':1
+            }else if(old_pageIndex>this.pageIndex){
+                $old_section.css({
+                     'transform':'translateY('+_this.dh+'px)'
                  });
-             }
+            }
          }
          //滚动结束钩子
          setTimeout(function(){

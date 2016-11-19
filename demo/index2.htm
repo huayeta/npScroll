@@ -22,6 +22,7 @@
         }
         .np-navigation-menu{
             position: fixed;
+            z-index: 9;
             right: 20px;
             bottom: 50%;
             transform: translateY(50%);
@@ -49,6 +50,9 @@
             left: 0;
             width: 100%;
             height: 100%;
+        }
+        .np-dn{
+            display: none;
         }
         /*demo 样式*/
         #first{
@@ -137,16 +141,17 @@
             <h3>npScroll</h3>
             <a class="j-next">下一个</a>
         </div>
-        <div class="np-section np-parallax" id="second">
+        <div class="np-section np-parallax np-dn" id="second">
             <p>Parallax effect</p>
         </div>
-        <div class="np-section" id="finale">
+        <div class="np-section np-dn" id="finale">
             <h3>footer</h3>
         </div>
     </div>
 </body>
 </html>
-<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js" charset="utf-8"></script>
+<!-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js" charset="utf-8"></script> -->
+<script src="http://nitrogen.inc:8080/bower_components/jquery/dist/jquery.min.js?v=1.0.0" charset="utf-8"></script>
 <script src="../npScroll.js" charset="utf-8"></script>
 <script type="text/javascript">
     var scroll=new npScroll({
