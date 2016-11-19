@@ -37,14 +37,19 @@
         .np-navigation-menu .navigation-item.navigation-item-active{
             background: #f9f9f9;
         }
-        .np-section{
-            transform: translateY(-100%);
-        }
-        .np-section.active{
-            transform: translateY(0);
-        }
         /* effect 2*/
-
+        .np-container{
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .np-section{
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
         /*demo 样式*/
         #first{
             background-color: #3595a1;
