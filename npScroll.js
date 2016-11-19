@@ -1,5 +1,5 @@
 /**
- * jQuery Plugin - v1.0.0 - 2016-11-18
+ * jQuery Plugin - v1.1.0 - 2016-11-18
  * @author huayeta
  */
  ;(function (factory) {
@@ -131,7 +131,11 @@
              var index=parseInt(location.hash.slice(5));
              if(index!==undefined && index!==this.pageIndex && index<=this.pagesMax){
                  this.scrollTo(index);
+             }else{
+                  this.scrollTo(this.pageIndex);
              }
+         }else{
+             this.scrollTo(this.pageIndex);
          }
      }
      npScroll.prototype.itemClick=function(obj){
