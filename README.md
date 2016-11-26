@@ -23,6 +23,7 @@
  * this.on('scrollStart',cb)；开始滚动
  * this.on('scrollEnd',cb)；结束滚动
 
+`.np-full` 代表section满屏
 默认加一个hash`#page1`，初始化滚动到第二页,默认是`#page0`
 
 # 安装
@@ -42,7 +43,7 @@ html部分：
 
     <body>
         <div class="np-container">
-            <div class="np-section">
+            <div class="np-section np-full">
                 <p>Section</p>
             </div>
 

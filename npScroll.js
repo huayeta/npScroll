@@ -24,8 +24,15 @@
          $.extend(opts,defaults);
          var _this=this;
          this.opts=opts;
+         this.$body=$('body');
+         this.$window=$(window);
+         this.wH=this.$window.height();
          this.$box=$(opts.containerClass);
+         this.$scrollTarget=this.$box;
+         if(this.opts.scrollTarget)this.$scrollTarget=$(this.opts.scrollTarget);
          this.$sections=this.$box.find(opts.sectionClass);
+         // 是否有满屏的
+         this.$box.find('.np-full').css('height',this.wH);
          this.section_top_arr=[];
          this.$sections.each(function(){
              var top=$(this).offset().top;
@@ -35,8 +42,6 @@
          this.pagesMax=this.$sections.size();
          this.pageIndex=0;
          this.$navigation=$('<div class="np-navigation-menu"></div>');
-         this.$body=$('body');
-         this.$window=$(window);
          this.time=new Date().getTime();
          this._events={};
          //初始化
@@ -176,7 +181,7 @@
          $section.addClass('np-section-active');
          var top=this.section_top_arr[index];
          if(this.opts.effect==1){
-             this.$box.stop().animate({scrollTop: top},1000);
+             this.$scrollTarget.stop().animate({scrollTop: top},1000);
          }else if(this.opts.effect==2){
              //如果效果2
              var $old_section=this.$sections.filter(':eq('+old_pageIndex+')');
